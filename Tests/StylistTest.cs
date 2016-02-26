@@ -13,6 +13,73 @@ namespace HairSalonNS
       DBConfiguration.ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=hair_salon_test;Integrated Security=SSPI;";
     }
 
+    [Fact]
+    public void Test_StylistEmptyAtFirst()
+    {
+      //Arrange, Act
+      int result = Stylist.GetAll().Count;
+
+      //Assert
+      Assert.Equal(0, result);
+
+    }
+
+    [Fact]
+    public void Test_Equal_ReturnsTrueForSameName()
+    {
+      //Arrange, Act
+      Stylist firstStylist = new Stylist("Steven");
+      Stylist secondStylist= new Stylist("Steven");
+
+      //Assert
+      Assert.Equal(firstStylist, secondStylist);
+    }
+
+    [Fact]
+    public void Test_Save_SavesStylistToDatabase()
+    {
+      //Arrange
+      Stylist testStylist = new Stylist("Household chores");
+      testStylist.Save();
+
+      //Act
+      List<Stylist> result = Stylist.GetAll();
+      List<Stylist> testList = new List<Stylist>{testStylist};
+
+      //AssertAssert.Equal(testList, result);
+    }
+
+    [Fact]
+    public void Test_Save_AssignsIdToStylistObject()
+    {
+      //Arrange
+      Stylist testStylist = new Stylist("Household chores");
+      testStylist.Save();
+
+      //Act
+      Stylist savedStylist = Stylist.GetAll()[0];
+
+      int result = savedStylist.GetId();
+      int testId = testStylist.GetId();
+
+      //AssertAssert
+      Assert.Equal(testId, result);
+    }
+
+    [Fact]
+    public void Test_Find_FindsStylistInDatabase()
+    {
+      //Arrange
+      Stylist testStylist = new Stylist("Household chores");
+      testStylist.Save();
+
+      //Act
+      Stylist foundStylist = Stylist.Find(testStylist.GetId());
+
+      //Assert
+      Assert.Equal(testStylist, foundStylist);
+    }
+
     public void Dispose()
     {
       // Client.DeleteAll();
