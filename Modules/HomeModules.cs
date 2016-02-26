@@ -18,6 +18,8 @@ namespace HairSalonNS
         newStylist.Save();
         return View["index.cshtml"];
       };
+
+
     }
   }
 }
