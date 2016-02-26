@@ -1,0 +1,38 @@
+<h1>Clients</h1>
+<hr />
+ @if (@Model.Count == 0)
+{
+  <h3>No clients have been added yet</h3>
+  <br>
+}
+else
+{
+  <h3>Here is your list of clients:</h3>
+  <br>
+  <ul>
+    @foreach (var client in Model)
+    {
+      <li>Name: @client.GetName() - Phone Numger: @client.GetPhone() | <a href="client/edit/@client.GetId()">Edit </a>| <a href="/client/delete/@client.GetId()">Delete</a></li>
+      <li></li>
+      <br>
+    }
+  </ul>
+}
+<form action="/clients/" method="post">
+  <label for="client-name">Client name:</label>
+  <input id="client-name" name="client-name" type="text">
+  <br>
+  <label for="client-phone">Client phone:</label>
+  <input id="client-phone" name="client-phone" type="text">
+  <br><br>
+  <select name="stylist-id">
+    @foreach (var stylist in Model)
+    {
+      <option value="@stylist.GetId()">@stylist.GetName()</option>
+    }
+  </select>
+  <button type="submit">Add new client</button>
+  <br>
+</form>
+
+<p><a href="/">Return home</a></p>

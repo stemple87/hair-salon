@@ -143,41 +143,40 @@ namespace HairSalonNS
       return foundStylist;
     }
 
-    // public List<Client> GetClients()
-    // {
-    //   SqlConnection conn = DB.Connection();
-    //   SqlDataReader rdr = null;
-    //   conn.Open();
-    //
-    //   SqlCommand cmd = new SqlCommand("SELECT * FROM clients WHERE stylist_id = @StylistId;", conn);
-    //   SqlParameter stylistIdParameter = new SqlParameter();
-    //   stylistIdParameter.ParameterName = "@StylistId";
-    //   stylistIdParameter.Value = this.GetId();
-    //   cmd.Parameters.Add(stylistIdParameter);
-    //   rdr = cmd.ExecuteReader();
-    //
-    //   List<Client> clients = new List<Client> {};
-    //   while (rdr.Read())
-    //   {
-    //     int ClientId = rdr.GetInt32(0);
-    //     string ClientName = rdr.GetString(1);
-    //     DateTime ClientDateTime = rdr.GetDateTime(2);
-    //     string ClientLocation = rdr.GetString(3);
-    //     int ClientStylistId = rdr.GetInt32(4);
-    //     Client newClient = new Client(ClientName, ClientLocation, ClientStylistId, ClientDateTime, ClientId);
-    //     clients.Add(newClient);
-    //   }
-    //   if (rdr != null)
-    //   {
-    //     rdr.Close();
-    //
-    //   }
-    //   if (conn != null)
-    //   {
-    //     conn.Close();
-    //   }
-    //   return clients;
-    // }
+    public List<Client> GetClients()
+    {
+      SqlConnection conn = DB.Connection();
+      SqlDataReader rdr = null;
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("SELECT * FROM clients WHERE stylists_id = @StylistId;", conn);
+      SqlParameter stylistIdParameter = new SqlParameter();
+      stylistIdParameter.ParameterName = "@StylistId";
+      stylistIdParameter.Value = this.GetId();
+      cmd.Parameters.Add(stylistIdParameter);
+      rdr = cmd.ExecuteReader();
+
+      List<Client> clients = new List<Client> {};
+      while (rdr.Read())
+      {
+        int ClientId = rdr.GetInt32(0);
+        string ClientName = rdr.GetString(1);
+        int ClientPhone = rdr.GetInt32(2);
+        int ClientStylistId = rdr.GetInt32(3);
+        Client newClient = new Client(ClientName, ClientPhone, ClientStylistId, ClientId);
+        clients.Add(newClient);
+      }
+      if (rdr != null)
+      {
+        rdr.Close();
+
+      }
+      if (conn != null)
+      {
+        conn.Close();
+      }
+      return clients;
+    }
 
   }
 }

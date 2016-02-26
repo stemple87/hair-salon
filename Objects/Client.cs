@@ -62,7 +62,7 @@ namespace HairSalonNS
         bool idEquality = (this.GetId() == newClient.GetId());
         bool nameEquality = (this.GetName() == newClient.GetName());
         bool phoneEquality = (this.GetPhone() == newClient.GetPhone());
-        bool stylistEquality = this.GetStylistId() == newClient.GetStylistId();
+        bool stylistEquality = (this.GetStylistId() == newClient.GetStylistId());
         return (idEquality && nameEquality && phoneEquality && stylistEquality);
       }
     }
