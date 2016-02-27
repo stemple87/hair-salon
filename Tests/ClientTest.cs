@@ -64,6 +64,8 @@ namespace HairSalonNS
       Assert.Equal(testClient, foundClient);
     }
 
+    [Fact]
+
     public void Dispose()
     {
       Client.DeleteAll();

@@ -26,7 +26,7 @@ namespace HairSalonNS
         var StylistClients = SelectedStylist.GetClients();
         model.Add("stylist", SelectedStylist);
         model.Add("client", StylistClients);
-        return View["index.cshtml", model];
+        return View["client.cshtml", SelectedStylist];
       };
 
       // client

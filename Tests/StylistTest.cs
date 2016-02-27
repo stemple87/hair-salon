@@ -80,9 +80,82 @@ namespace HairSalonNS
       Assert.Equal(testStylist, foundStylist);
     }
 
+    [Fact]
+    public void Test_GetClients_RetrievesAllClientsWithStylist()
+    {
+      Stylist testStylist = new Stylist("Household chores");
+      testStylist.Save();
+
+      Client firstClient = new Client("Mow the lawn", 1, testStylist.GetId());
+      firstClient.Save();
+
+      Client secondClient = new Client("Do the dishes", 1, testStylist.GetId());
+      secondClient.Save();
+
+      List<Client> testClientList = new List<Client>{firstClient, secondClient};
+      List<Client> resultClientList = testStylist.GetClients();
+
+      Assert.Equal(testClientList, resultClientList);
+    }
+
+    // public void Update(string newName)
+    // {
+    //   SqlConnection conn = DB.Connection();
+    //   SqlDataReader rdr;
+    //   conn.Open();
+    //
+    //   SqlCommand cmd = new SqlCommand("UPDATE stylists SET name = @NewName OUTPUT INSERTED.name WHERE id = @StylistId;", conn);
+    //
+    //   SqlParameter newNameParameter = new SqlParameter();
+    //   newNameParameter.ParameterName = "@NewName";
+    //   newNameParameter.Value = newName;
+    //   cmd.Parameters.Add(newNameParameter);
+    //
+    //   SqlParameter stylistIdParameter = new SqlParameter();
+    //   stylistIdParameter.ParameterName = "@StylistId";
+    //   stylistIdParameter.Value = this.GetId();
+    //   cmd.Parameters.Add(stylistIdParameter);
+    //   rdr = cmd.ExecuteReader();
+    //
+    //   while(rdr.Read())
+    //   {
+    //     this._name = rdr.GetString(0);
+    //   }
+    //
+    //   if (rdr != null)
+    //   {
+    //     rdr.Close();
+    //   }
+    //
+    //   if (conn != null)
+    //   {
+    //     conn.Close();
+    //   }
+    // }
+    //
+    // public void Delete()
+    // {
+    //   SqlConnection conn = DB.Connection();
+    //   conn.Open();
+    //
+    //   SqlCommand cmd = new SqlCommand("DELETE FROM stylists WHERE id = @StylistId; DELETE FROM clients WHERE stylists_id = @StylistId;", conn);
+    //
+    //   SqlParameter stylistIdParameter = new SqlParameter();
+    //   stylistIdParameter.ParameterName = "@StylistId";
+    //   stylistIdParameter.Value = this.GetId();
+    //
+    //   cmd.Parameters.Add(stylistIdParameter);
+    //   cmd.ExecuteNonQuery();
+    //
+    //   if (conn != null)
+    //   {
+    //     conn.Close();
+    //   }
+    // }
+
     public void Dispose()
     {
-      // Client.DeleteAll();
+      Client.DeleteAll();
       Stylist.DeleteAll();
 
     }
