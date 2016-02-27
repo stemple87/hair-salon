@@ -24,11 +24,11 @@ namespace HairSalonNS
         Dictionary<string, object> model = new Dictionary<string, object>();
         var SelectedStylist = Stylist.Find(parameters.id);
         var StylistClients = SelectedStylist.GetClients();
+        List<Stylist>
         model.Add("stylist", SelectedStylist);
         model.Add("client", StylistClients);
-        return View["client.cshtml", SelectedStylist];
+        return View["client.cshtml", model];
       };
-
       // client
 
 
