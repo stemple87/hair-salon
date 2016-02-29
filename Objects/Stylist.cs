@@ -218,10 +218,10 @@ namespace HairSalonNS
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("DELETE FROM stylists WHERE id = @StylistId; DELETE FROM Clients WHERE stylists_id = @StylistId;", conn);
+      SqlCommand cmd = new SqlCommand("DELETE FROM stylists WHERE id = @Id", conn);
 
       SqlParameter stylistIdParameter = new SqlParameter();
-      stylistIdParameter.ParameterName = "@StylistId";
+      stylistIdParameter.ParameterName = "@Id";
       stylistIdParameter.Value = this.GetId();
 
       cmd.Parameters.Add(stylistIdParameter);
