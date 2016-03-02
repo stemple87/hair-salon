@@ -1,5 +1,5 @@
-# _Repeat Counter_
-#### _Will check for repeated word, 2/26_
+# _Hair Salon_
+#### _A website for a hair salon owner, 2/26_
 
 #### _**By Simon Temple**_
 
@@ -9,10 +9,14 @@ _This is an application that lets a hair salon owner add a list of stylists, and
 
 ## Setup/Installation Requirements
 
-* _Move into the repeat_counter folder in your windows power shell._
-* _Run dnu restore, then dnx kestrel._
-* _In your browser type: localhost:5004_
-<!-- Will need instructions for opening scripts -->
+* Open windows power shell. Type 'cd Desktop' then 'git clone https://github.com/stemple87/hair-salon.git'
+* Open Microsoft SQL Server Management studio
+* Click on File then Open then File. locate hair_salon.sql open the file and then click execute.
+* Repeat with hair_salon_test file
+* Move into the hair_salon folder in your windows power shell.
+* Run dnu restore, then dnx kestrel.
+* In your browser type: localhost:5004
+
 
 ## Known Bugs
 
