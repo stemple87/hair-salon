@@ -25,11 +25,3 @@ _None yet._
 ## Support and contact details
 
 _You can contact me at simonctemple@live.com or at my github page https://github.com/stemple87/_
-
-## Technologies Used
-
-_This app uses HTML, CSS, C#, SQL, the Nancy web framework and Razor programming syntax._
-
-### License
-
-Copyright (c) **_2016 Simon Temple_**

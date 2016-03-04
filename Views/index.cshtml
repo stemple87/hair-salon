@@ -1,21 +1,3 @@
 <h1>Hair Salon</h1>
 <hr />
-<h3>Add a new Stylist</h3>
-<form action="/" method="post">
-  <label for="stylist-name">Stylist name</label>
-  <input id="stylist-name" name="stylist-name" type="text">
-  <button type="submit">Add</button>
-</form>
-<hr />
-@if (@Model.Count == 0)
-{
-  <p>There are no stylists.</p>
-}
-<ul>
-  @foreach (var stylist in Model)
-  {
-    <li><a href="/stylists/@stylist.GetId()">@stylist.GetName()</a> | <a href="/stylists/edit/@stylist.GetId()">Edit </a>| <a href="/stylists/delete/@stylist.GetId()">Delete</a></li>
-    <br>
-  }
-</ul>
-<br>
+<h3><a href="/stylists">View and add stylists</a></h3>

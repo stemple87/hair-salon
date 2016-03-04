@@ -1,38 +1,43 @@
-<h1>Clients</h1>
+<h1>Clients for @Model["stylist"].GetName()</h1>
 <hr />
- @if (@Model["clients"].Count == 0)
+<h3>Add a new client:</h3>
+<form action='/stylists/@Model["stylist"].GetId()/new' method="post">
+  <label for="new-name">Name:</label>
+  <input id="new-name" name="new-name" type="text">
+  <br>
+  <label for="new-phone">Phone Number:</label>
+  <input id="new-phone" name="new-phone" type="text">
+  <br>
+  <label for="stylist-id">Stylist:</label>
+  <select name="stylist-id">
+    @foreach (var stylist in @Model["stylists"])
+    {
+      <option value="@stylist.GetId()">@stylist.GetName()</option>
+    }
+  </select>
+  <br>
+  <button type="submit">Add new client</button>
+</form>
+
+<p><a href="/">Return home</a></p>
+<hr />
+ @if (@Model["client"].Count == 0)
 {
   <h3>No clients have been added yet</h3>
   <br>
 }
 else
 {
-  <h3>Here is your list of clients:</h3>
-  <br>
-  <ul>
-    @foreach (var client in Model)
-    {
-      <li>Name: @client.GetName() - Phone Number: @client.GetPhone() | <a href="client/edit/@client.GetId()">Edit </a>| <a href="/client/delete/@client.GetId()">Delete</a></li>
-      <li></li>
-      <br>
-    }
-  </ul>
+  @foreach(var client in @Model["client"])
+  {
+    <li>
+      @client.GetName() |
+      <a href="/clients/edit/@client.GetId()">Edit</a>
+      <form action="/clients/delete/@client.GetId()" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <button type="submit">Delete</button>
+      </form>
+    </li>
+  }
 }
-<form action="/clients/" method="post">
-  <label for="client-name">Client name:</label>
-  <input id="client-name" name="client-name" type="text">
-  <br>
-  <label for="client-phone">Client phone:</label>
-  <input id="client-phone" name="client-phone" type="text">
-  <br><br>
-  <select name="stylist-id">
-    @foreach (var stylist in Model)
-    {
-      <option value="@stylist.GetId()">@stylist.GetName()</option>
-    }
-  </select>
-  <button type="submit">Add new client</button>
-  <br>
-</form>
-
-<p><a href="/">Return home</a></p>
+<br>

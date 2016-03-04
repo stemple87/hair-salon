@@ -64,6 +64,55 @@ namespace HairSalonNS
       Assert.Equal(testClient, foundClient);
     }
 
+    // [Fact]
+    // public void Test_Update_UpdatesClientInDatabase()
+    // {
+    //   //Arrange
+    //   string name = "Home stuff";
+    //   Client testClient = new Client(name);
+    //   testClient.Save();
+    //   string newName = "Work stuff";
+    //
+    //   //Act
+    //   testClient.Update(newName);
+    //
+    //   string result = testClient.GetName();
+    //
+    //   //Assert
+    //   Assert.Equal(newName, result);
+    // }
+    //
+    // [Fact]
+    // public void Test_Delete_DeletesClientFromDatabase()
+    // {
+    //   //Arrange
+    //   string name1 = "Home stuff";
+    //   Client testClient1 = new Client(name1);
+    //   testClient1.Save();
+    //
+    //   string name2 = "Work stuff";
+    //   Client testClient2 = new Client(name2);
+    //   testClient2.Save();
+    //
+    //   Client testClient1 = new Client("Mow the lawn", 1, testClient1.GetId());
+    //   testClient1.Save();
+    //   Client testClient2 = new Client("Send emails", 1, testClient2.GetId());
+    //   testClient2.Save();
+    //
+    //   //Act
+    //   testClient1.Delete();
+    //   List<Client> resultClients = Client.GetAll();
+    //   List<Client> testClientList = new List<Client> {testClient2};
+    //
+    //   List<Client> resultClients = Client.GetAll();
+    //   List<Client> testClientList = new List<Client> {testClient2};
+    //
+    //   //Assert
+    //   Assert.Equal(testClientList, resultClients);
+    //   Assert.Equal(testClientList, resultClients);
+    //
+    // }
+
     [Fact]
 
     public void Dispose()
